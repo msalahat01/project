@@ -1,0 +1,220 @@
+.body {
+  background-color: #FFFCF2;
+}
+
+.pages {
+  position: sticky !important;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.all{
+  position: relative;
+  display: grid;
+  grid-template-rows: 400px 850px 840px 740px 250px;
+  margin-right: 1%;
+  margin-top: 20%;
+}
+
+.imggym {
+  border-radius: 50%;
+  right: 5% ;
+  top: -340px;
+  position: absolute;
+  }
+
+  .smartgym {
+    border-radius: 30%;
+    position: absolute;
+    top: 730px;
+    right: 57.5% ;
+   }
+
+   .smartdev {
+    border-radius: 30%;
+    position: absolute;
+    top: 2360px;
+    left: 59%;
+   }
+
+  .text1 {
+color: #252422;
+font-weight: 800;
+font-size: 300%;
+position: absolute;
+right: 63% ;
+top: -130px;
+  }
+
+  .text2 {
+    color: #252422;
+    font-size: 160%;
+    font-weight:700;
+    position: absolute;
+    right: 69.7% ;
+    top: -35px;
+      }
+
+      .text3 {
+        color: #252422;
+        font-size: 150%;
+        font-weight:600;
+        position: absolute;
+        top: 540px;
+        align-content: center;
+      }
+
+      .tex1 {
+        color: #252422;
+        font-size: 150% !important;
+        font-weight:600 !important;
+        position: absolute;
+        top: 1420px;
+      }
+    
+      .tex3 {
+        color: #252422;
+        font-size: 150% ;
+        font-weight:600 ;
+        position: absolute;
+        top: 2262px ;
+
+      }
+
+      .text4 {
+        color: #252422;
+       width: 50%;
+       font-size: 100%;
+       line-height:150%;
+        text-align: left;
+        position: absolute;
+        top: 720px;
+        left: 48%;
+      }
+
+      .text44{
+        color: #252422;
+        width: 80%;
+        font-size: 100%;
+        line-height:150%;
+         text-align: left;
+         position: absolute;
+         top: 630px;
+         left: 11%;
+      }
+
+
+      .text5 {
+        color: #252422;
+        width: 45%;
+        font-size: 120%;
+        line-height:120%;
+        text-align: left;
+        position: absolute;
+        top: 2440px;
+        right: 48%;
+    }
+
+      .line {
+        position: absolute;
+        top: 85%;
+        right: 24%;
+        width:50%;
+       
+ }
+
+ .line1 {
+  width: 25% !important;
+  border-top: 2px solid black ;
+  position: absolute;
+  top: 520px;  
+  right: 730px;
+}
+
+.lin11{
+  width: 25% !important;
+  border-top: 2px solid black ;
+  position: absolute;
+  top: 1410px;  
+  right: 730px;
+
+}
+
+.lin1 {
+  width: 25% !important;
+  border-top: 2px solid black ;
+  position: absolute;
+  top: 2250px;  
+  right: 730px;
+
+}
+.bu1 { 
+  position: absolute;
+  right: 75%;
+  top: 100px;
+  height:1.3cm;
+  width: 15%;
+}
+
+.bus{
+position: absolute ;
+right: 58%;
+top: 100px;
+height:1.3cm;
+width: 15%;
+}
+
+.bu2 {
+  position: absolute;
+  right: 61%;
+  top: 175px;
+  height:1.3cm;
+  width: 26%;
+}
+
+.reblack {
+  background-color: #252422 ;
+  width: 1905px;
+  height: 740px;
+  position: absolute;
+  bottom: -26%;
+  
+  }
+
+  .footer {
+    position: absolute;
+    width: 100%;
+    top: 77%;
+   }
+
+   .form {
+    position: absolute;
+    width: 50%;
+    top: 18%;
+    left: 25%;
+   }
+
+   .textf {
+    position: absolute;
+    color: #FFFCF2;
+    font-size: 160%;
+    width: 100%;
+    top: 3%;
+   }
+
+   .n1 {
+    margin-right: 100%;
+   }
+
+   .n2 {
+    margin-right: 74%;
+   }
+
+   .Carousel {
+    position: absolute;
+     top: 1580px;
+     width: 55% !important;
+     left: 21%;
+   }
+
+   
