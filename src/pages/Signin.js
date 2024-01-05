@@ -115,7 +115,7 @@ const box={
                 </button>
               </div>
               <p  style={{position: 'absolute' , left: "53%" , top: "109%" , width: "60%" , fontSize:"80%" }} className="forgot-password text-right">
-                <a  style={{color :"#00002F"}} href="#">Forget password?</a>
+                <a  style={{color :"#00002F"}} href="/ForgotPassword">Forget password?</a>
               </p>
             </form>
             

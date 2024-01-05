@@ -1,7 +1,8 @@
 import React, { useState ,useEffect} from 'react';
 import { Form, Input, Button, Upload, message, Col , Row  , Avatar} from 'antd';
 import {DollarOutlined , UserOutlined, LockOutlined, PhoneOutlined, MailOutlined, UserAddOutlined, InfoCircleOutlined  } from '@ant-design/icons';
-import { db,auth } from '../firebase';
+import { db,auth,storage} from '../firebase';
+import { getStorage, ref , uploadBytesResumable ,getDownloadURL} from "firebase/storage";
 import { doc,getDoc,setDoc,updateDoc } from 'firebase/firestore';
 import { Radio } from 'antd';
 
@@ -12,10 +13,14 @@ const Personal = () => {
     const [ pic,setPic]=useState("");
   
     const [editMode, setEditMode] = useState(false);
-    const [info,setInfo]=useState({Name:"",Phone:"",Info:"",Cost:"",Location:"",openFriday:"",openDefault:"",trainees:[""],Type:"",Img:"",ID:""});
+    const [info,setInfo]=useState({Name:"",Phone:"",Info:"",Cost:"",Location:"",openFriday:"",openDefault:"",trainees:[""],Type:"",ID:""});
 
 
     const [botton,setBotton]=useState(false);
+
+  
+  
+    
     
     useEffect(() => {
       auth.onAuthStateChanged((user) => {
@@ -95,10 +100,62 @@ const Personal = () => {
       setEditMode(false);
     };
 
-    const changePhoto = () => {
-     
-       
+
+    const [file, setFile] = useState(null);
+    const [percent, setPercent] = useState(0);
+
+    const handleFileChange = e => {
+      if (e.target.files[0]) {
+        setFile(e.target.files[0]);
+      }
+    }
+
+    const handleUpload = async () => {
+      if (!file) {
+        console.error('No file selected');
+      }
+  
+      // Create a reference to the storage location
+      const storageRef = ref(storage , `uploads/${file.name}`)
+      const uploadTask = uploadBytesResumable(storageRef, file);
+
+      
+    uploadTask.on(
+      "state_changed",
+      (snapshot) => {
+          const percent = Math.round(
+              (snapshot.bytesTransferred / snapshot.totalBytes) * 100
+          );
+
+          // update progress
+          setPercent(percent);
+      },
+      (err) => console.log(err),
+      () => {
+          // download url
+          getDownloadURL(uploadTask.snapshot.ref).then((url) => {
+              console.log(url);
+
+              if (info.ID == 1)
+              updateDoc(doc(db,"Gymuser",auth.currentUser.uid),{
+                Img:url
+              });
+
+              else
+              updateDoc(doc(db,"Coachuser",auth.currentUser.uid),{
+                Img:url
+              });
+
+              setTimeout(function(){
+                window.location.reload();
+             }, 500);
+          });
+          }
+      );
+
+
     };
+
   
     const handleSave = () => {
       form.validateFields().then((values) => {
@@ -116,32 +173,32 @@ const Personal = () => {
         console.log(error);
       });
 
+
     };
+  
   
  
   return (
     <Col span={8}>
     <Form
       form={form}
-      onFinish={onFinish}
     >
     <Row>
       <br></br>
       <Form.Item  
       name="Img"
-      
       rules={[{ required: false, message: 'Please enter your photo' }]}>
-        
-      <div style = {{margin: '0 0 0 460px' , backgroundColor:'#FFFCF2' , }}>
-        
+         <div style = {{margin: '0 0 0 460px' , backgroundColor:'#FFFCF2' , }}>
+
         <label for='input-file' style={{display:"block",borderRadius:"90%",width:"190px",padding:"5px",margin:"auto",cursor:"pointer", background: editMode?"#EB5E28":"#D1D1D1"}}>
-        {/* <img id='profilePic' style={{width:"170px",height:"170px" , borderRadius:"50%"}} src={form.getFieldValue("photo")} alt='Profile Pic'></img> */}
         <Avatar id='profilePic' size={170} src={form.getFieldValue("Img")} text="Username" style={{backgroundColor:"#D9D9D9"}}/>
 
         </label>
-        <button disabled={!editMode}  onClick={changePhoto} style={{display:"block",width:"190px",color:"#fff",padding:"10px",margin:"8px auto",borderRadius:"5px",cursor:"pointer", background: editMode?"#EB5E28":"#D9D9D9"}}>Upload Photo</button>
-        <input disabled={!editMode} id='input-file' style={{display:"none"}} type='file' accept='image/jpeg, image/jpg, image/png'></input>
+        <button disabled={!editMode}  onClick={handleUpload} style={{display:"block",width:"190px",color:"#fff",padding:"10px",margin:"8px auto",borderRadius:"5px",cursor:"pointer", background: editMode?"#EB5E28":"#D9D9D9"}}>Upload Photo</button>
+        <input disabled={!editMode} onChange={handleFileChange} id='input-file' style={{display:"none"}} type='file' accept='image/jpeg, image/jpg, image/png'></input>
       </div>
+    
+      
       </Form.Item> </Row>
 
       <Form.Item 
@@ -271,4 +328,4 @@ const Personal = () => {
   )}
 
 
-export default Personal
+export default Personal;

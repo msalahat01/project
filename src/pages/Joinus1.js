@@ -64,7 +64,6 @@ if(name && email && phone && password && cpassword !== "" && cheek == true)
             Phone:phone,
             Name:name,
             Email:email,
-            Password:password ,
             ID:1 ,
             Location : 'Location',
             Cost:"0",

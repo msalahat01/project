@@ -9,6 +9,7 @@ import Joinus1 from './pages/Joinus1';
 import Joinus2 from './pages/Joinus2';
 import Overlayout from "./pages/layout";
 import Settinglayout from './pages/Settinglayout';
+import ForgotPassword from './pages/Forgetpassword';
 
 function App() {
   return (
@@ -24,6 +25,8 @@ function App() {
               <Route path="/Joinus2" element={<Joinus2 />} />
               <Route path="/Overlayout" element={<Overlayout/>}/>
               <Route path="/Settinglayout" element={<Settinglayout/>}/>
+              <Route path="/ForgotPassword" element={<ForgotPassword/>}/>
+
           </Routes>
           </div>
 
