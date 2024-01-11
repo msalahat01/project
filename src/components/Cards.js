@@ -4,6 +4,11 @@ import { Button} from 'antd';
 import { Progress } from 'antd';
 import { Avatar } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
+import { Input } from "antd";
+
+
+const { TextArea } = Input;
+
 
 const ButtonStyle={
     color:"#FFFCF2",
@@ -11,44 +16,23 @@ const ButtonStyle={
     border: "2px solid #2C3E50 ", 
     borderRadius:"30px",
     border: "2px solid #2C3E50 ",
-    width:"100px",
+    width:"200px",
     height:"40px",
 }   
 
-const progressStyle={
-    color:"#2C3E50",
-    position: "absolute",
-    
 
-}
 
 const Cards = () => {
   return (
     <div>
-    <Row gutter={16}>
-    <Col span={16} >
-       <Card  style={{
-        margin:"35px 0px 0px 300px",width:"690px",height:"360px", border: "2px solid #D9D9D9", borderRadius:"40px",
-        background:"#1ABC9C " ,border: "2px solid #1ABC9C",  position: "relative", }}>
-           
-           <div style={{
-              position: "absolute",
-              top: "38%",
-              left: "-200px",
-              transform: "translateY(-50%)",
-            }}>
-              <Avatar size={120} icon={<UserOutlined />} />
-            </div>
-           <Card  style={{
-             margin:"0px 0px 0px 0px",width:"300px",height:"260px", border: "2px solid #D9D9D9", borderRadius:"40px",
-             background:"#D9D9D9 " ,border: "2px solid #1ABC9C",}}
-             >
-              
-              
-            <Card  style={{
-             margin:"0px 0px 0px 280px",width:"350px",height:"100px", border: "2px solid #2C3E50", borderRadius:"60px",
-             background:"#2C3E50 " ,border: "2px solid #2C3E50",}}>
-              <p style={{margin:"0px 0px 0px 46px ", fontSize:"12px", color:" #D9D9D9 "}}>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p> 
+
+
+       <Card  style={{width:"680px",height:"400px", border: "2px solid #D9D9D9", borderRadius:"40px", 
+       background:"#EB5E28 " ,border: "2px solid #1ABC9C",  position: "relative", }}>
+         
+  
+            <Card  style={{width:"600px",height:"100px", borderRadius:"40px", left:"5%", background:"#2C3E50 " ,border: "2px solid #2C3E50",position: "absolute"}}>
+              <p style={{position: "absolute" ,left:"18%",top:"8%", fontSize:"14px", color:" #D9D9D9 "}}>Info About Traine </p> 
                   
             <Card  style={{
              margin:"0px 0px 0px 0px",width:"77px",height:"77px", border: "1px solid #D9D9D9", borderRadius:"60px",
@@ -56,25 +40,37 @@ const Cards = () => {
         </Card> 
 
       </Card> 
-         
-   </Card>
 
-        <Button type="primary" style={{...ButtonStyle,position: "absolute", left: "120px", top:"303px",color:" #D9D9D9 "}}>
+      <TextArea
+              rows={6}
+              style={{
+                position: "absolute",
+                borderRadius: "40px",
+                top:"37%",
+                left:"5%",
+                backgroundColor: "#D9D9D9",
+                textIndent: "30px",
+                fontSize: "16px",
+                width:"600px"
+              }}
+              autoFocus={false}
+            />
+         
+
+        <Button type="primary" style={{...ButtonStyle,position: "absolute", left: "17%", top:"84%",color:" #D9D9D9 "}}>
             Send
         </Button> 
-         
-        <Progress type="circle" percent={80}  width={99}  strokeColor="#D9D9D9 " trailColor="#2C3E50 " strokeWidth={20}  format={() => '' } 
-        style={{...progressStyle, left: "300px", top:"190px", width:"300px"}}/>
 
-        <Progress type="circle" percent={60} width={99} strokeColor="#D9D9D9 " trailColor="#2C3E50 " strokeWidth={20} format={() => ''} 
-            style={{...progressStyle, left: "420px", top:"190px"  ,width:"300px"}}/>
+        <Button type="primary" style={{...ButtonStyle,position: "absolute", left: "53%", top:"84%",color:" #D9D9D9 "}}>
+            Send For All
+        </Button> 
+         
+      
         
 </Card>
-       
         
-  </Col>
-</Row>
 </div>
+
   )
 }
 

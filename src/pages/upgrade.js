@@ -1,11 +1,11 @@
 import React from 'react'
-import { Card, Col, Row } from 'antd';
-import { Button} from 'antd';
 import { ScheduleOutlined} from '@ant-design/icons';
 import { Space } from 'antd';
 import { useState,useEffect } from 'react';
-import { doc,getDoc,updateDoc } from 'firebase/firestore';
+import { doc,getDoc,setDoc,updateDoc } from 'firebase/firestore';
 import { db ,auth} from '../firebase';
+import { Form, Input, Button, Upload, message, Col , Row  , Card, Avatar} from 'antd';
+
 
 const CardStyle = {
   width:280,
@@ -34,84 +34,112 @@ const ButtonStyle={
   fontWeight:700,
 }    
 function Upgrade(){
+
+  const [form] = Form.useForm();
   const [plan,setPlan]=useState("");
   const [duration,setDuration]=useState("")
-  
+  const [info,setInfo]=useState({Cost:"",ID:""});
 
-  const handleSub1 = (e) => {
-    e.preventDefault();
-    console.log(plan);
-    if (window.confirm('Are you sure you wish to change sub?')) {
-    updateDoc(doc(db,"webUsers",auth.currentUser.uid),{plan:"Plan 1",plan_duration:"Unlimited"}).then((docRef)=>{const docId=docRef.id;})
-    .catch(err => {
-         console.log(err);
-      });
-      setPlan("Plan 1");
-      setDuration("Unlimited");
-    }
-  };
-  const handleSub2 = (e) => {
-    e.preventDefault();
-    console.log(plan);
-    var date =new Date();
-    date.setMonth(date.getMonth()+1);
-    console.log(date.toLocaleDateString());
-    if (window.confirm('Are you sure you wish to change sub?')) {
-
-    updateDoc(doc(db,"webUsers",auth.currentUser.uid),{plan:"Plan 2",plan_duration:date.toLocaleDateString()}).then((docRef)=>{const docId=docRef.id;})
-    
-    .catch(err => {
-         console.log(err);
-      });
-      setPlan("Plan 2");
-      setDuration(date.toLocaleDateString());
-    }
-  };
-  const handleSub3 = (e) => {
-    e.preventDefault();
-    console.log(plan);
-    var date =new Date();
-    date.setMonth(date.getMonth()+1);
-    console.log(date.toLocaleDateString());
-    if (window.confirm('Are you sure you wish to change sub?')) {
-
-    updateDoc(doc(db,"webUsers",auth.currentUser.uid),{plan:"Plan 3",plan_duration:date.toLocaleDateString()}).then((docRef)=>{const docId=docRef.id;})
-    
-    .catch(err => {
-         console.log(err);
-      });
-      setPlan("Plan 3");
-      setDuration(date.toLocaleDateString());
-    }
-
-  };
-  function getPlan(){
+  useEffect(() => {
     auth.onAuthStateChanged((user) => {
       if (user) {
-        getDoc(doc(db, "webUsers", user.uid)).then(docSnap => {
+         
+         getDoc(doc(db, "Gymuser", user.uid)).then(docSnap => {
           if (docSnap.exists()) {
-
-          setPlan(docSnap.data().plan);
-          if(docSnap.data().plan_duration !== null)
-            setDuration(docSnap.data().plan_duration);
-          else 
-            setDuration("Unlimited");
+            let values={Cost:docSnap.data().Cost,ID:docSnap.data().ID}
+            setInfo(values);
+            form.setFieldValue("Cost",docSnap.data().Cost)
+            form.setFieldValue("ID",docSnap.data().ID)
           } else {
             console.log("No such document!");
           }
         }) 
       } else {
-        console.log("no user");
+        // User not logged in or has just logged out.
       }
     })
-  }
-  useEffect(() => {
-    let ignore = false;
+
+    auth.onAuthStateChanged((user) => {
+      if (user) {
+         
+         getDoc(doc(db, "Coachuser", user.uid)).then(docSnap => {
+          if (docSnap.exists()) {
+            let values={Cost:docSnap.data().Cost,Location:docSnap.data().Location,ID:docSnap.data().ID}
+            setInfo(values)
+            form.setFieldValue("Cost",docSnap.data().Cost)
+            form.setFieldValue("Id",docSnap.data().ID)
+          } else {
+            console.log("No such document!");
+          }
+        }) 
+      } else {
+        // User not logged in or has just logged out.
+      }
+    })
     
-    if (!ignore)  getPlan()
-    return () => { ignore = false; }
-    },[]);
+  },[]);
+
+
+
+
+  const handleSave1 = (e) => {
+    e.preventDefault();
+    var date =new Date();
+    date.setMonth(date.getMonth()+11);
+      if (window.confirm('Are you sure you wish to change sub?'))
+      if (info.ID == 1)
+      updateDoc(doc(db,"Gymuser",auth.currentUser.uid),{
+        Cost: 50
+      }).then((docRef)=>{const docId=docRef.id;console.log(docId);})
+      else
+      updateDoc(doc(db,"Coachuser",auth.currentUser.uid),{
+        Cost: 50
+      }).then((docRef)=>{const docId=docRef.id;console.log(docId);})
+      
+    setPlan("Plan 1");
+    setDuration(date.toLocaleDateString());
+  
+  };
+
  
+  const handleSave2 = (e) => {
+    e.preventDefault();
+    var date =new Date();
+    date.setMonth(date.getMonth()+11);
+      if (window.confirm('Are you sure you wish to change sub?'))
+      if (info.ID == 1)
+      updateDoc(doc(db,"Gymuser",auth.currentUser.uid),{
+        Cost: 75
+      }).then((docRef)=>{const docId=docRef.id;console.log(docId);})
+      else
+      updateDoc(doc(db,"Coachuser",auth.currentUser.uid),{
+        Cost: 75
+      }).then((docRef)=>{const docId=docRef.id;console.log(docId);})
+      
+    setPlan("Plan 2");
+    setDuration(date.toLocaleDateString());
+  
+  };
+
+  const handleSave3 = (e) => {
+    e.preventDefault();
+    var date =new Date();
+    date.setMonth(date.getMonth()+11);
+      if (window.confirm('Are you sure you wish to change sub?'))
+      if (info.ID == 1)
+      updateDoc(doc(db,"Gymuser",auth.currentUser.uid),{
+        Cost: 100
+      }).then((docRef)=>{const docId=docRef.id;console.log(docId);})
+      else
+      updateDoc(doc(db,"Coachuser",auth.currentUser.uid),{
+        Cost: 100
+      }).then((docRef)=>{const docId=docRef.id;console.log(docId);})
+      
+    setPlan("Plan 3");
+    setDuration(date.toLocaleDateString());
+  
+  };
+
   
   return (
     <div>
@@ -140,7 +168,7 @@ function Upgrade(){
         Limited customization options but provides a solid foundation for managing your fitness business effectively.
             </p>
 
-        <Button type="primary" style={{...ButtonStyle,}} onClick={handleSub1}>
+        <Button type="primary" style={{...ButtonStyle,}} onClick={handleSave1}>
           Subscribe
         </Button>
 
@@ -157,7 +185,7 @@ function Upgrade(){
             </p>
 
 
-        <Button type="primary" style={{...ButtonStyle}} onClick={handleSub2}>
+        <Button type="primary" style={{...ButtonStyle}} onClick={handleSave2}>
         Subscribe
         </Button>
 
@@ -174,7 +202,7 @@ function Upgrade(){
         Ideal for businesses that require scalability, enterprise-level management tools, and comprehensive support to drive success.
             </p>
 
-        <Button type="primary" style={{...ButtonStyle}} onClick={handleSub3}>
+        <Button type="primary" style={{...ButtonStyle}} onClick={handleSave3}>
         Subscribe
         </Button>
 

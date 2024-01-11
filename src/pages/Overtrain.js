@@ -1,5 +1,7 @@
 import { Tabs } from 'antd';
 import Over from './Over';
+import Traniess from './Trainess';
+
 const onChange = (key) => {
   console.log(key);
 };
@@ -15,7 +17,14 @@ const items = [
     key: '1',
     label: "overveiw" ,
     children: <Over />,
+  },
+
+  {
+    key: '2',
+    label: "Trainess" ,
+    children: <Traniess />,
   }
+
 ];
 const Overtrain = () => 
 <Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{margin: '14px 0px 0px 30px'}} tabBarStyle={tabBarStyle}/>;

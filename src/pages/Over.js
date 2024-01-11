@@ -25,13 +25,16 @@ function Over() {
 
   const [initLoading, setInitLoading] = useState(true);
   const [list, setList] = useState([]);
+  const [list1, setList1] = useState([]);
   const [numberOfActive, setActive] = useState(0);
   const [numberOfAll, setAll] = useState(0);
   const [uid, setUID] = useState("");
   const [post, setPost] = useState("");
-  const [trainees, setTrainees] = useState([]);
+  const [trainess, setTrainess] = useState("");
   const [name, setName] = useState("");
   const [ID,setID]=useState("");
+  const [Maxnumber, setMaxnumber] = useState(0);
+
 
 
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -105,10 +108,13 @@ function Over() {
 
           if (docSnap.exists()) {
 
-            if (docSnap.data().trainees != null) {
-              setActive(docSnap.data().trainees.length);  
-            setTrainees(docSnap.data().trainees);
+            if (docSnap.data().trainess != null) {
+              setActive(docSnap.data().trainess.length);
+              setTrainess(docSnap.data().trainess);
+              setList1(docSnap.data().trainess);
+              setMaxnumber(docSnap.data().Cost);
             }
+            
             if (docSnap.data().post != null) {
               setAll(docSnap.data().post.length);
               setName(docSnap.data().name);
@@ -127,10 +133,13 @@ function Over() {
         getDoc(doc(db, "Coachuser", user.uid)).then((docSnap) => {
 
           if (docSnap.exists()) {
-            if (docSnap.data().trainees != null) {
-              setActive(docSnap.data().trainees.length);
-              setTrainees(docSnap.data().trainees);
+            if (docSnap.data().trainess != null) {
+              setActive(docSnap.data().trainess.length);
+              setTrainess(docSnap.data().trainess);
+              setList1(docSnap.data().trainess);
+              setMaxnumber(docSnap.data().Cost);
             }
+
             if (docSnap.data().post != null) {
               setAll(docSnap.data().post.length);
               setName(docSnap.data().name);
@@ -295,9 +304,9 @@ function Over() {
               }}
             >
               <Statistic
-                title={<h3 style={{ color: "#2C3E50" }}>Active Trainees</h3>}
+                title={<h3 style={{ color: "#2C3E50" }}> Trainees</h3>}
                 value={numberOfActive}
-                valueStyle={{ color: "#2C3E50", fontSize: "50px" }}
+                valueStyle={{ color: "#2C3E50", fontSize: "55px" }}
                 style={{
                   display: "flex",
                   flexDirection: "column-reverse",
@@ -342,7 +351,7 @@ function Over() {
               <div style={{ position: "relative" }}>
                 <Progress
                   type="circle"
-                  percent={numberOfActive / 100}
+                  percent={(numberOfActive / Maxnumber)*100} 
                   width={90}
                   strokeWidth={20}
                   strokeColor={["#252422"]}
@@ -357,13 +366,13 @@ function Over() {
               </div>
               <h2
                 style={{
-                  fontSize: "15px",
+                  fontSize: "17px",
                   position: "absolute",
-                  top: "60%",
-                  left: "1%",
+                  top: "65%",
+                  left: "20%",
                 }}
               >
-                Active from 100 <br /> This show your active trainees above 100
+                 Trainess from {Maxnumber}
               </h2>
             </Card>
 
@@ -380,7 +389,7 @@ function Over() {
               <div style={{ position: "relative" }}>
                 <Progress
                   type="circle"
-                  percent={numberOfAll}
+                  percent={(numberOfAll / Maxnumber)*100} 
                   width={90}
                   strokeWidth={20}
                   strokeColor={["#1ABC9C"]}
@@ -395,14 +404,13 @@ function Over() {
               </div>
               <h2
                 style={{
-                  fontSize: "15px",
+                  fontSize: "17px",
                   position: "absolute",
-                  top: "60%",
-                  left: "10spx",
+                  top: "65%",
+                  left: "25%",
                 }}
               >
-                Your stats to get a 100 posts <br />
-                Let us do it
+                 Posts from {Maxnumber}
               </h2>
             </Card>
           </Row>
