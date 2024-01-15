@@ -16,7 +16,7 @@ export const Signin = () => {
   const year = new Date().getFullYear();
 
   const page={
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#FFFCF2",
      height: "1200px",
       width: "1920px",
 } 

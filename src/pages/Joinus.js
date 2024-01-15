@@ -33,7 +33,7 @@ export const Joinus = () => {
   } 
 
   const page={
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#FFFCF2",
      height: "1200px",
       width: "1920px",
 } 

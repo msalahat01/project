@@ -18,7 +18,7 @@ export const Joinus2 = () => {
   const year = new Date().getFullYear();
 
   const page={
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#FFFCF2",
      height: "1250px",
       width: "1920px",
 } 

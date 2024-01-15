@@ -12,7 +12,7 @@ function ForgotPassword() {
   const history = useNavigate();
   const year = new Date().getFullYear();
   const page = {
-    backgroundColor: "#FFFFFF",
+    backgroundColor: "#FFFCF2",
     height: "1200px",
     width: "1920px",
   };
@@ -91,10 +91,10 @@ function ForgotPassword() {
           position: "absolute",
           width: "25%",
           left: "37.5%",
-          top: "240px",
+          top: "260px",
         }}
       >
-        Forgot Password
+        Reset Password
       </h1>
       <form
         style={{
@@ -111,9 +111,10 @@ function ForgotPassword() {
           style={{
             position: "absolute",
             left: "0px",
-            top: "50%",
+            top: "62%",
             height: "18%",
             fontSize: "80%",
+            borderRadius:"14px"
           }}
           type="email"
           name="email"
@@ -127,9 +128,9 @@ function ForgotPassword() {
             background: "#EB5E28",
             borderRadius: "20px",
             position: "absolute",
-            left: "25%",
-            top: "160%",
-            width: "50%",
+            left: "14%",
+            top: "140%",
+            width: "70%",
             height: "18%",
           }}
           type="submit"
@@ -137,6 +138,8 @@ function ForgotPassword() {
         >
           Reset
         </button>
+        <p  style={{color :"black",position: "absolute", left:"1%", top:"36%",fontSize:"17px" ,textAlign:"start"}} >Please enter the email address you would like your password reset information sent to </p>
+        <a  style={{color :"#00002F",position: "absolute", left:"36%", top:"165%",fontSize:"18px"}} href="/Signin">Back To Login</a>
       </form>
       <div>
         <div className="" style={{ ...foot, position: "absolute" }}>
