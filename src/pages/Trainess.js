@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from "react";
 import { Card, Col, Row } from 'antd';
 import { UserOutlined } from '@ant-design/icons';
-import { Avatar, Space } from 'antd';
+import { Avatar, Space ,Button, List, Skeleton, message } from 'antd';
 import { CaretLeftOutlined , CaretRightOutlined } from '@ant-design/icons';
 import Cards from '../components/Cards';
 import { db, auth } from "../firebase";
@@ -13,6 +13,9 @@ import {
   getDoc,
   arrayRemove,setDoc
 } from "firebase/firestore";
+import { Scrollbars } from "react-custom-scrollbars";
+
+
 
 
 const Traniess = () => {
@@ -25,6 +28,8 @@ const Traniess = () => {
     fontWeight:"bold",
   };
 
+
+  const [initLoading, setInitLoading] = useState(true);
   const [list1, setList1] = useState([]);
   const [numberOfActive, setActive] = useState(0);
   const [ID,setID]=useState("");
@@ -54,7 +59,7 @@ const Traniess = () => {
               setList1(docSnap.data().trainess);
               setMaxnumber(docSnap.data().Cost);
             }
-
+            setInitLoading(false);
           } else {
             console.log("No such document!");
           }
@@ -72,7 +77,7 @@ const Traniess = () => {
               setMaxnumber(docSnap.data().Cost);
 
             }
-
+            setInitLoading(false);
           } else {
             setID(1);
             console.log("No such document!");
@@ -107,7 +112,83 @@ const Traniess = () => {
   <div style={{position:"absolute", top:"280px" , left:"40%"  }}>
       <Cards/>
   </div>
-  
+
+<div style={{position:"absolute", top:"35px" , left:"-10%"  }}>
+
+  <Card
+            size="small"
+            style={{
+              height: 650,
+              width: 500,
+              background: "#EB5E28 ",
+              color: "white",
+              border: "3px solid #FFFCF2",
+              borderRadius: "40px",
+              overscrollBehavior: "auto",
+              overflowX: "hidden",
+            }}
+          >
+                          <div style={{position:"absolute" , fontSize:"24px" , top:"3%" ,left: "40%" , color:"#2C3E50"}}>Trainess</div>
+
+
+            <Scrollbars
+              autoHide
+              autoHideTimeout={1000}
+              autoHideDuration={200}
+              style={{ height: 555 , marginTop:"60px"}}
+            >
+              
+              <List  style={{position:"absolute" ,top:"4%" }}
+                className="demo-loadmore-list"
+                loading={initLoading}
+                itemLayout="horizontal"
+                dataSource={list1}
+                size={list1.length}
+                renderItem={(item, index) => (
+                  <Card
+                    size="small"
+                    style={{
+                      width: 450,
+                      height :80 ,
+                      margin: "0px 0px 9px 3px",
+                      background: "#D9D9D9 ",
+                      color: "black",
+                      border: "3px solid #FFFCF2",
+                      borderRadius: "35px",
+                      wordBreak: "break-word",
+                    }}
+                  >
+                    {item.loading ? (
+                      <Skeleton avatar loading active />
+                    ) : (
+                      <List.Item.Meta
+                        description={
+                          <>
+                            <div
+                              style={{
+                                fontSize :"20px",
+                                display: "flex",
+                                margin: "8px 0px 0px 80px" ,
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                             <div>{list1[list1.length - 1 - index]}</div>
+
+                              <Space size="middle">
+                       
+                              </Space>
+                            </div>
+                          </>
+                        }
+                      />
+                    )}
+                  </Card>
+                )}
+              />
+            </Scrollbars>
+          </Card>
+          </div>
  </div>   
  
  )}

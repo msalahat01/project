@@ -34,7 +34,7 @@ const items = [
   }
 ];
 const Upset = () => 
-<Tabs defaultActiveKey="1" items={items} onChange={onChange} tabBarStyle={tabBarStyle} />;
+<Tabs defaultActiveKey="1" items={items} onChange={onChange}  tabBarStyle={tabBarStyle} />;
 
 export default Upset;
 

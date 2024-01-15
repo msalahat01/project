@@ -27,5 +27,5 @@ const items = [
 
 ];
 const Overtrain = () => 
-<Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{margin: '14px 0px 0px 30px'}} tabBarStyle={tabBarStyle}/>;
+<Tabs defaultActiveKey="1" items={items} onChange={onChange} style={{margin: '0px 0px 0px 30px'}} tabBarStyle={tabBarStyle}/>;
 export default Overtrain;
