@@ -15,6 +15,9 @@ import {
 } from "firebase/firestore";
 import { db, auth } from "../firebase";
 import { Scrollbars } from "react-custom-scrollbars";
+import Box from '@mui/material/Box';
+import Rating from '@mui/material/Rating';
+import Typography from '@mui/material/Typography';
 
 const { TextArea } = Input;
 
@@ -26,15 +29,17 @@ function Over() {
   const [initLoading, setInitLoading] = useState(true);
   const [list, setList] = useState([]);
   const [list1, setList1] = useState([]);
+  const [listRating, setListrating] = useState([]);
   const [numberOfActive, setActive] = useState(0);
   const [numberOfAll, setAll] = useState(0);
+  const [numberOfRatig, setRating] = useState(0);
   const [uid, setUID] = useState("");
   const [post, setPost] = useState("");
   const [trainess, setTrainess] = useState("");
   const [name, setName] = useState("");
   const [ID,setID]=useState("");
   const [Maxnumber, setMaxnumber] = useState(0);
-
+  const [value, setValue] = useState("");
 
 
   const [editingIndex, setEditingIndex] = useState(-1);
@@ -64,6 +69,16 @@ function Over() {
     setEditingIndex(-1);
     message.success("Post deleted successfully");
   };
+
+// create a variable for the sum and initialize it
+let sum = 0;
+
+// iterate over each item in the array
+for (let i = 0; i < listRating.length; i++ ) {
+  sum += listRating[i];
+}
+
+
 
   const handlePost = (e) => {
     e.preventDefault();
@@ -110,9 +125,12 @@ function Over() {
 
             if (docSnap.data().trainess != null) {
               setActive(docSnap.data().trainess.length);
+              setRating(docSnap.data().rating.length);
               setTrainess(docSnap.data().trainess);
               setList1(docSnap.data().trainess);
+              setListrating(docSnap.data().rating);
               setMaxnumber(docSnap.data().Cost);
+              setValue (sum / numberOfRatig) ;
             }
             
             if (docSnap.data().post != null) {
@@ -135,9 +153,12 @@ function Over() {
           if (docSnap.exists()) {
             if (docSnap.data().trainess != null) {
               setActive(docSnap.data().trainess.length);
+              setRating(docSnap.data().rating.length);
               setTrainess(docSnap.data().trainess);
               setList1(docSnap.data().trainess);
+              setListrating(docSnap.data().rating);
               setMaxnumber(docSnap.data().Cost);
+              setValue (sum / numberOfRatig) ;
             }
 
             if (docSnap.data().post != null) {
@@ -291,16 +312,34 @@ function Over() {
           </Card>
         </Col>
 
+
+
         <Col span={9}>
+<Row>
+        <Card
+              bordered={false}
+              style={{
+                backgroundColor: "#D9D9D9",
+                width: "500px",
+                height: "55px",
+                borderRadius: "14px",
+                margin: "65px 0px 0px 0px",
+              }}
+            >
+              <Rating  style={{margin:"-12px 0px 0px 0px"}} name="half-rating-read" value={value}  precision={0.5} readOnly />
+              <div style={{fontSize:"20px" ,margin:"-35px 380px 0px 0px "}}>Rating </div>
+
+            </Card>
+            </Row>
           <Row>
             <Card
               bordered={false}
               style={{
                 backgroundColor: "#D9D9D9",
                 width: "220px",
-                height: "220px",
+                height: "200px",
                 borderRadius: "30px",
-                margin: "70px 0px 0px 0px",
+                margin: "30px 0px 0px 0px",
               }}
             >
               <Statistic
@@ -309,6 +348,7 @@ function Over() {
                 valueStyle={{ color: "#2C3E50", fontSize: "55px" }}
                 style={{
                   display: "flex",
+                  margin: "0px 0px 0px 0px",
                   flexDirection: "column-reverse",
                   alignItems: "center",
                 }}
@@ -319,9 +359,9 @@ function Over() {
               style={{
                 backgroundColor: "#EB5E28",
                 width: "220px",
-                height: "220px",
+                height: "200px",
                 borderRadius: "30px",
-                margin: "70px 0px 0px 60px",
+                margin: "30px 0px 0px 60px",
               }}
             >
               <Statistic
@@ -343,7 +383,7 @@ function Over() {
                 backgroundColor: "#EB5E28 ",
                 color: "white",
                 width: "220px",
-                height: "220px",
+                height: "200px",
                 borderRadius: "30px",
                 margin: "30px 0px 0px 0px",
               }}
@@ -359,8 +399,9 @@ function Over() {
                   format={() => ""}
                   style={{
                     position: "absolute",
-                    left: "50%",
-                    transform: "translateX(-50%)",
+                    left: "25%",
+                    marginTop:"8px"
+
                   }}
                 />
               </div>
@@ -368,8 +409,8 @@ function Over() {
                 style={{
                   fontSize: "17px",
                   position: "absolute",
-                  top: "65%",
-                  left: "20%",
+                  top: "66%",
+                  left: "22%",
                 }}
               >
                  Trainess from {Maxnumber}
@@ -381,7 +422,7 @@ function Over() {
               style={{
                 backgroundColor: "#D9D9D9 ",
                 width: "220px",
-                height: "220px",
+                height: "200px",
                 borderRadius: "30px",
                 margin: "30px 0px 0px 60px",
               }}
@@ -397,8 +438,8 @@ function Over() {
                   format={() => ""}
                   style={{
                     position: "absolute",
-                    left: "50%",
-                    transform: "translateX(-50%)",
+                    left: "25%",
+                    marginTop:"8px"
                   }}
                 />
               </div>
@@ -406,8 +447,8 @@ function Over() {
                 style={{
                   fontSize: "17px",
                   position: "absolute",
-                  top: "65%",
-                  left: "25%",
+                  top: "67%",
+                  left: "27%",
                 }}
               >
                  Posts from {Maxnumber}

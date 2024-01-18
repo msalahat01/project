@@ -72,7 +72,8 @@ if(name && email && phone && password && cpassword !== "" && cheek == true)
             openFriday:"openFriday",
             Img : "https://firebasestorage.googleapis.com/v0/b/intigym-e8cb4.appspot.com/o/ben-sweet-2LowviVHZ-E-unsplash.jpg?alt=media&token=1cd58ce8-ea46-40f2-b556-49277d7c6f41" ,
             post : [],
-            trainess : []
+            trainess : [],
+            rating : []
             }).then(() => {
             setEmail("");
             setName("");
