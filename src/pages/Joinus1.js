@@ -33,9 +33,9 @@ const foot={
 
 const box={
   background: "#696969",
-   width: "34%",
-    height: "65%" ,
-     right : "33%" , 
+   width: "32.5%",
+    height: "64.6%" ,
+     right : "34%" , 
      top : "10%" 
 } 
 
