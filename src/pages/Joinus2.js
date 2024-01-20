@@ -127,35 +127,35 @@ alert("Password not match");
            <h1 style={{color: "#FFFFFF" , position: 'absolute' , width: "25%" , left: '37.5%' , top: '140px'}}>Register For <br></br> Coach OR Nutrition</h1>
 
 
-           <Form id='form1' style={{color:"#FFFFFF" , position: 'absolute' , left:'35.5%', top : '22%' }}>
+           <Form id='form1' style={{color:"#FFFFFF" , position: 'absolute' , left:'36.5%', top : '20%' }}>
                 
               <Form.Group className="mb-3" controlId="formGridName">
                 <Form.Label style={{marginLeft: "-475px"}} >Name</Form.Label>
-                <Form.Control style={{ fontSize: "80%"}} value={name} onChange={(e)=> setName(e.target.value)} type="text" placeholder="Enter name for Coach Or Nutrition " />
+                <Form.Control style={{ fontSize: "80%",width:"520px"}} value={name} onChange={(e)=> setName(e.target.value)} type="text" placeholder="Enter name Organization" />
               </Form.Group> 
 
               <Form.Group className="mb-3" controlId="formGridEmail">
                 <Form.Label style={{marginLeft: "-475px"}} >Email</Form.Label>
-                <Form.Control style={{ fontSize: "80%"}}  value={email} onChange={(e)=> setEmail(e.target.value)} type="email" placeholder="Enter email" />
+                <Form.Control style={{ fontSize: "80%",width:"520px"}}  value={email}  type="email" onChange={(e)=> setEmail(e.target.value)} placeholder="Enter email" />
                     </Form.Group>
                   
                   <Form.Group className="mb-3" controlId="formGridPassword">
                     <Form.Label style={{marginRight: "440px"}} >Password</Form.Label>
-                    <Form.Control style={{ fontSize: "80%"}}  value={password} onChange={(e)=> setPassword(e.target.value)} type='password' placeholder="Enter Password" />
+                    <Form.Control style={{ fontSize: "80%",width:"520px"}}  value={password} type='password'  onChange={(e)=> setPassword(e.target.value)} placeholder="Enter Password" />
                   </Form.Group>
 
                   <Form.Group className="mb-3" controlId="formGridCPassword">
                     <Form.Label style={{marginRight: "350px"}} >Confirm Password</Form.Label>
-                    <Form.Control style={{ fontSize: "80%"}} value={cpassword}  onChange={(e)=> setCpassword(e.target.value)} type='password' rows={3} placeholder="Repeat Password" />
+                    <Form.Control style={{ fontSize: "80%",width:"520px"}} value={cpassword}  onChange={(e)=> setCpassword(e.target.value)} type='password' rows={3} placeholder="Repeat Password" />
                   </Form.Group>
 
                   <Form.Group className="mb-4" controlId="formGridPhone">
                     <Form.Label style={{marginRight: "475px"}} >Phone</Form.Label>
-                    <Form.Control style={{ fontSize: "80%"}}  value={phone}  onChange={(e)=> setPhone(e.target.value)} type='Phone' rows={3} placeholder="Enter Phone Number" />
+                    <Form.Control style={{ fontSize: "80%",width:"520px"}}  value={phone}  onChange={(e)=> setPhone(e.target.value)} type='Phone' rows={3} placeholder="Enter Phone Number" />
                   </Form.Group>
 
-                  <Form.Group  className="mb-3" controlId="formBasicCheckbox">
-                    <Form.Check  type="checkbox" id='cheekbox1' checked={cheek} onChange={(e)=> setCheek(e.target.checked)}  label="I agree to the Terms of Service and Privacy Policy." />
+                  <Form.Group   style={{ fontSize: "90%",width:"550px"}}className="mb-3" controlId="formBasicCheckbox"  >
+                    <Form.Check    type="checkbox" id='cheekbox1' checked={cheek} onChange={(e)=> setCheek(e.target.checked)} label="I agree to the Terms of Service and Privacy Policy." />
                   </Form.Group>
 
                 <Form.Group style={{textAlign:"center"}}>
@@ -166,7 +166,6 @@ alert("Password not match");
                   </Form.Group>
                   
              </Form>
-   
              <div>
           <div className="" style={{...foot , position: 'absolute'}}>
               <footer  style={{textAlign:"center" , color:"#FFFFFF" , width: "100%", position: 'absolute', top: '60px'}}>

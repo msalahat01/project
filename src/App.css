@@ -26,7 +26,7 @@
   .smartgym {
     border-radius: 30%;
     position: absolute;
-    top: 730px;
+    top: 680px;
     right: 57.5% ;
    }
 
@@ -69,7 +69,7 @@ top: -130px;
         font-size: 150% !important;
         font-weight:600 !important;
         position: absolute;
-        top: 1420px;
+        top: 1400px;
       }
     
       .tex3 {
@@ -77,18 +77,18 @@ top: -130px;
         font-size: 150% ;
         font-weight:600 ;
         position: absolute;
-        top: 2262px ;
+        top: 2242px ;
 
       }
 
       .text4 {
         color: #252422;
        width: 50%;
-       font-size: 100%;
-       line-height:150%;
+       font-size: 110%;
+       line-height:160%;
         text-align: left;
         position: absolute;
-        top: 720px;
+        top: 760px;
         left: 48%;
       }
 
@@ -135,7 +135,7 @@ top: -130px;
   width: 25% !important;
   border-top: 2px solid black ;
   position: absolute;
-  top: 1410px;  
+  top: 1390px;  
   right: 730px;
 
 }
@@ -144,7 +144,7 @@ top: -130px;
   width: 25% !important;
   border-top: 2px solid black ;
   position: absolute;
-  top: 2250px;  
+  top: 2230px;  
   right: 730px;
 
 }
@@ -174,7 +174,7 @@ width: 15%;
 
 .reblack {
   background-color: #252422 ;
-  width: 1905px;
+  width: 1920px;
   height: 740px;
   position: absolute;
   bottom: -26%;
@@ -212,7 +212,7 @@ width: 15%;
 
    .Carousel {
     position: absolute;
-     top: 1580px;
+     top: 1540px;
      width: 55% !important;
      left: 21%;
    }

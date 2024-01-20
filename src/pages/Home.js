@@ -73,23 +73,8 @@ export const Home = () => {
       <h1 className="text3">Services</h1>
 
       <Col>
-      <h3 className="text44">IntelliGym provides a range of services to empower gyms, coaches, nutritionists, and trainees in their fitness journeys. Our offerings include:</h3>
       <h3 className="text4">
-1. Gym Management System: Streamline gym operations, manage memberships, schedule classes, and handle billing seamlessly.<br></br>
-
-2. Personalized Training Programs: Create customized workout plans tailored to clients' goals and track their progress.<br></br>
-
-3. Nutrition Planning and Tracking: Develop personalized meal plans, track calorie intake, and monitor nutritional progress.<br></br>
-
-4. User-Friendly Mobile App: Access training plans, log workouts, and track progress conveniently.<br></br>
-
-5. Real-Time Communication: Foster seamless communication between fitness professionals and clients.<br></br>
-
-6. Data Analytics and Reporting: Gain valuable insights into client progress and engagement for data-driven decision-making.<br></br>
-
-7. Data Security and Privacy: Ensure user data is protected through robust encryption and privacy measures.<br></br>
-
-Experience the transformative power of IntelliGym Solutions in optimizing gym management, personalized training, nutrition planning, and communication. Join us to make your fitness journey more flexible and enjoyable.</h3>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ultricies tellus et congue lobortis. Curabitur eleifend bibendum vulputate. Integer pellentesque sem at turpis rutrum, sed mattis ante finibus. Donec eu neque elit. In elementum enim ac velit euismod porta. Proin a arcu pretium, sagittis metus at, convallis ipsum. Sed facilisis pretium tellus. Morbi varius velit at imperdiet sagittis. Integer volutpat metus vel porta consectetur. Mauris consectetur blandit rhoncus. Sed accumsan ultricies facilisis. Nullam eget nisi efficitur, vulputate eros id, posuere lacus. Praesent orci sem, tempus ac tortor ut, dignissim malesuada turpis. Aliquam non purus nisl. Nam posuere vehicula pretium. Morbi tincidunt, dolor at feugiat fringilla, purus sapien venenatis turpis, eu sodales urna massa vitae nisi.</h3>
 
         </Col>
 
