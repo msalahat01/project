@@ -8,6 +8,7 @@ import { Firestore } from 'firebase/firestore';
 import { doc,addDoc, collection,setDoc,updateDoc,getDoc } from 'firebase/firestore';
 import { useNavigate } from "react-router-dom";
 import {  signInWithEmailAndPassword   } from 'firebase/auth';
+import { message } from "antd";
 
 
 
@@ -49,13 +50,15 @@ const box={
           // Signed in
           const user = userCredential.user;
           navigate("/Overlayout")
+          
           console.log(user);
-      })
-      .catch((error) => {
+        })
+        .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
-          console.log(errorCode, errorMessage)
-      });
+          console.log(errorCode, errorMessage);
+          message.error("Invalid email or password. Please try again.");
+        });
      
   }
 

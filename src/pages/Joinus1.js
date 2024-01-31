@@ -12,6 +12,8 @@ import { CRow } from '@coreui/react'
 import NavBar from '../components/NavBar';
 import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import {  useNavigate } from 'react-router-dom';
+import { message } from "antd";
+
 
 export const Joinus1 = () => {
 
@@ -88,25 +90,26 @@ if(name && email && phone && password && cpassword !== "" && cheek == true)
             });
           console.log(user);
           navigate("/Signin")
+          
+          message.success("User registered successfully!");
+
           // ...
-      })
-      .catch((error) => {
+        })
+        .catch((error) => {
           const errorCode = error.code;
           const errorMessage = error.message;
           console.log(errorCode, errorMessage);
           // ..
-      });
-
-    
-}
-else
-alert("please fill all fields");
-}
-
-else 
-alert("Password not match");
-
+          message.error("Registration failed:email already in use");
+        });
+    } else {
+      message.error("Please fill all fields");
+    }
+  } else {
+    message.error("Password not match");
+  }
 };
+
 
   return (
     
